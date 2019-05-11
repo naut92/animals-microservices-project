@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="2" author="naut">
+        <addColumn tableName="animals">
+            <column name="customer_id" type="long"/>
+        </addColumn>
+        <addForeignKeyConstraint baseColumnNames="customer_id"
+                                 baseTableName="animals"
+                                 constraintName="fk_customer_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="customers"/>
+    <sql>
+        UPDATE animals SET customer_id = 2 WHERE id = 1;
+        UPDATE animals SET customer_id = 2 WHERE id = 2;
+        UPDATE animals SET customer_id = 5 WHERE id = 3;
+        UPDATE animals SET customer_id = 3 WHERE id = 4;
+        UPDATE animals SET customer_id = 3 WHERE id = 5;
+        UPDATE animals SET customer_id = 3 WHERE id = 6;
+        UPDATE animals SET customer_id = 1 WHERE id = 7;
+    </sql>
+    </changeSet>
+</databaseChangeLog>

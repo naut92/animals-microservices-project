@@ -1,0 +1,51 @@
+buildscript {
+    ext {
+        springBootVersion = '2.1.4.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath('se.transmode.gradle:gradle-docker:1.2')
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'docker'
+
+
+group 'animals-microserices-project'
+project.version = '0.0.1'
+sourceCompatibility = 1.8
+
+
+repositories {
+    mavenCentral()
+    maven { url 'https://repo.spring.io/milestone' }
+}
+
+ext {
+    set('springCloudVersion', 'Greenwich.SR1')
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
+
+dependencies {
+    //Spring Cloud
+    compile 'org.springframework.cloud:spring-cloud-dependencies'
+    compile 'org.springframework.cloud:spring-cloud-config-server'
+
+    //tests
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    //group = 'animals-project':
+    //implementation('animals-project:animals-app:0.0.1')
+}

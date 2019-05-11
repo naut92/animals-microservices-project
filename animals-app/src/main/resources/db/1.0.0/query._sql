@@ -1,0 +1,2 @@
+--SELECT s.star_name, a.astronomer_name FROM stars s INNER JOIN astronomers a ON s.astronomer_id = a.id;
+SELECT s.id, s.star_name, s.longitude, s.latitude, s.color, a.astronomer_name AS astronomers_entity FROM stars s LEFT JOIN astronomers a ON s.astronomer_id = a.id

@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: veterinarians-service
+
+server:
+  servlet:
+    context-path: /veterinarians-api
+  port: 8084

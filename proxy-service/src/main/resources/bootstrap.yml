@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: proxy-service
+  cloud:
+    config:
+      uri: http://localhost:8089
+
+server:
+  port: 8063
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8062/eureka/
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
+
+zuul:
+  routes:
+    animals-api:
+      path: /animals-api/**
+      serviceId: animals-app
+      url: http://localhost:8081/animals-api
+    counties-api:
+      path: /counties-api/**
+      serviceId: counties-service
+      url: http://localhost:8083/counties-api
+    veterinarians-api:
+      path: /veterinarians-api/**
+      serviceId: veterinarians-service
+      url: http://localhost:8084/veterinarians-api
+    city-api:
+      path: /city-api/**
+      serviceId: city-service
+      url: http://localhost:8082/city-api

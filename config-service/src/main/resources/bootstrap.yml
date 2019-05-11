@@ -1,0 +1,8 @@
+#only for dev mode
+spring:
+  profiles:
+    active: native
+#################
+
+server:
+  port: 8089

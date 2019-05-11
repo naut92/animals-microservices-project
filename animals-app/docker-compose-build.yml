@@ -1,0 +1,12 @@
+version: '3.7'
+services:
+  frontend:
+    build: frontend.yml
+    ports:
+     - "3002:3002"
+    links:
+      - backend
+  backend:
+    build: backend.old_yml
+    ports:
+     - "8081:8081"

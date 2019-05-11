@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: counties-service
+
+server:
+  servlet:
+    context-path: /counties-api
+  port: 8083

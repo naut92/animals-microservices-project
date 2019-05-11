@@ -1,0 +1,23 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8062/eureka/
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
+
+zuul:
+  routes:
+    animals-api:
+      path: /animals-api/**
+      serviceId: animals-app
+    counties-api:
+      path: /counties-api/**
+      serviceId: counties-service
+    veterinarians-api:
+      path: /veterinarians-api/**
+      serviceId: veterinarians-service
+    city-api:
+      path: /city-api/**
+      serviceId: city-service
