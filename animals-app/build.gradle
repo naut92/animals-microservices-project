@@ -17,8 +17,8 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'docker'
 
-group 'animals-microserices-project'
-project.version = '0.0.1'
+group 'animals-microservices-project'
+project.version = '0.0.1.-PostgreSQL'
 sourceCompatibility = 1.8
 
 configurations {
@@ -65,7 +65,7 @@ dependencies {
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
     implementation 'org.springframework.cloud:spring-cloud-starter-config'
     
-    implementation 'org.springframework.cloud: spring-cloud-starter-sleuth'
+    //implementation 'org.springframework.cloud: spring-cloud-starter-sleuth'
 }
 
 ext {
@@ -79,7 +79,7 @@ dependencyManagement {
 }
 
 task buildDocker(type: Docker, dependsOn: build) {
-    project.group = 'local'
+    project.group = 'animals-microservices-project'
     baseImage 'openjdk:8-jdk-alpine'
     workingDir('/app')
     addFile("build/libs/animals-app-${project.version}.jar", './')
@@ -88,7 +88,6 @@ task buildDocker(type: Docker, dependsOn: build) {
     exposePort(8081)
     push = false
 }
-
 
 /*task buildDockerCompose(type: Docker, dependsOn: build) {
     dockerfile = file('src/main/docker/resources/backend-docker-compose.yml')

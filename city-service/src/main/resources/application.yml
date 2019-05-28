@@ -2,26 +2,6 @@ spring:
   application:
     name: city-service
 
-  datasource:
-    #url: jdbc:h2:~/animals_db;DB_CLOSE_ON_EXIT=FALSE; #AUTO_SERVER=TRUE
-    #url: jdbc:h2:mem:animals_db; #DB_CLOSE_DELAY=-1 #DB_CLOSE_DELAY=-1;
-    url: jdbc:postgresql://localhost:5432/animals_db #DB_CLOSE_DELAY=-1; DB_CLOSE_ON_EXIT=FALSE
-    #platform: h2
-    platform: postgresql
-    username: sa
-    #password:
-    password: pass #postgres
-    #driverClassName: org.h2.Driver
-    driverClassName: org.postgresql.Driver
-    #initialization-mode: always
-  jpa:
-      #database-platform: org.hibernate.dialect.H2Dialect
-      #hibernate:
-      #  ddl-auto: create-drop
-      #show-sql: true
-      database-platform: org.hibernate.dialect.PostgreSQL94Dialect
-      properties.hibernate.temp.use_jdbc_metadata_defaults: false
-
 server:
   servlet:
     context-path: /city-api

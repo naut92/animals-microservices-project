@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if ./gradlew build buildDocker then
+if ../animals-app/gradlew build buildDocker then
     docker-compose up
     docker-compose -f docker-compose-build.yml up --build
 

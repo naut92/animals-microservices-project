@@ -11,3 +11,6 @@ In order to use the app, please clone this simple backend app - https://github.c
 
 swagger2 doc:
 http://localhost:8081/api/swagger-ui.html#
+
+Docker image:
+./gradlew build buildDocker

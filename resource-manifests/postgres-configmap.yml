@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-config
+  labels:
+    app: postgres
+data:
+  POSTGRES_DB: animals_db
+  POSTGRES_USER: sa
+  POSTGRES_PASSWORD: pass

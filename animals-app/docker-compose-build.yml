@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   frontend:
-    build: frontend.yml
+    build: ../resource-manifests/frontend.yml
     ports:
      - "3002:3002"
     links:

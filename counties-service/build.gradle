@@ -17,7 +17,7 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'docker'
 
-group 'animals-microserices-project'
+group 'animals-microservices-project'
 project.version = '0.0.1'
 sourceCompatibility = 1.8
 
@@ -55,12 +55,8 @@ dependencies {
     
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
     implementation 'org.springframework.cloud:spring-cloud-starter-config'
-
-    implementation 'org.springframework.cloud: spring-cloud-starter-sleuth'
-
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
-
-    implementation 'org.springframework.cloud:spring-cloud-starter-config'
+    
 }
 
 
@@ -68,4 +64,19 @@ dependencyManagement {
     imports {
         mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
     }
+}
+
+task buildDocker(type: Docker, dependsOn: build) {
+    project.group = 'animals-microservices-project'
+    baseImage 'openjdk:8-jdk-alpine'
+    workingDir('/app')
+    addFile("build/libs/counties-service-${project.version}.jar", './')
+    setEnvironment('SPRING_PROFILES_ACTIVE', 'docker,cors')
+    entryPoint(["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "counties-service-${project.version}.jar"])
+    exposePort(8083)
+    push = false
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.10.3'
 }

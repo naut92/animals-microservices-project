@@ -7,8 +7,8 @@ spec:
   selector:
     app: frontend
   ports:
-  - port: 5000
-    targetPort: 5000
+  - port: 80
+    targetPort: 80
     protocol: TCP
     name: http
 ---
@@ -21,8 +21,8 @@ spec:
   selector:
     app: backend
   ports:
-  - port: 8080
-    targetPort: 8080
+  - port: 8081
+    targetPort: 8081
     protocol: TCP
     name: http
 ---
@@ -41,9 +41,9 @@ spec:
       paths:
       - path: /*
         backend:
-          serviceName: frontend-node-service
-          servicePort: 5000
+          serviceName: frontend
+          servicePort: 80
       - path: /api/*
         backend:
-          serviceName: backend-node-service
-          servicePort: 8080
+          serviceName: backend
+          servicePort: 8081
