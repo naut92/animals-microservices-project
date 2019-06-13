@@ -52,11 +52,19 @@ dependencies {
     //compile group: 'com.sun.xml.bind', name: 'jaxb-core', version: '2.3.0'
     //compile group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.3.0'
     //compile group: 'javax.activation', name: 'activation', version: '1.1.1'
-    
-    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
-    implementation 'org.springframework.cloud:spring-cloud-starter-config'
+
+    /********** без K8s:
+     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+     implementation 'org.springframework.cloud:spring-cloud-starter-config'
+     */
+
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
-    
+
+    //*kubernetes:
+    implementation 'org.springframework.cloud:spring-cloud-starter-kubernetes'
+    implementation 'org.springframework.cloud:spring-cloud-starter-kubernetes-ribbon'
+    //*/
+    //implementation('animals-microserices-project:animals-app:0.0.1')
 }
 
 

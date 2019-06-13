@@ -1,21 +1,20 @@
 spring:
   application:
     name: animals-app
-
 ###
 #   Database Settings
 ###
   datasource:
-      #url: jdbc:h2:~/animals_db;DB_CLOSE_ON_EXIT=FALSE; #AUTO_SERVER=TRUE
+      url: jdbc:h2:~/animals_db;DB_CLOSE_ON_EXIT=FALSE; #AUTO_SERVER=TRUE
       #url: jdbc:h2:mem:animals_db; #DB_CLOSE_DELAY=-1 #DB_CLOSE_DELAY=-1;
-      url: jdbc:postgresql://localhost:5432/animals_db #DB_CLOSE_DELAY=-1; DB_CLOSE_ON_EXIT=FALSE
-      #platform: h2
-      platform: postgresql
+      #url: jdbc:postgresql://localhost:5432/animals_db #DB_CLOSE_DELAY=-1; DB_CLOSE_ON_EXIT=FALSE
+      platform: h2
+      #platform: postgresql
       username: sa
-      #password:
-      password: pass #postgres
-      #driverClassName: org.h2.Driver
-      driverClassName: org.postgresql.Driver
+      password:
+      #password: pass #postgres
+      driverClassName: org.h2.Driver
+      #driverClassName: org.postgresql.Driver
       initialization-mode: always
   jpa:
     #database-platform: org.hibernate.dialect.H2Dialect

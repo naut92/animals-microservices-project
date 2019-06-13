@@ -1,12 +1,6 @@
-spring:
-  application:
-    name: animals-app
-  cloud:
-    config:
-      uri: http://localhost:8089
+server:
+  port: 8084
 
-################################################
-# Enable to discovery-service:
 eureka:
   client:
     enabled: true

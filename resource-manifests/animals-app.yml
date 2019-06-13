@@ -1,0 +1,47 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: animals-app
+  labels:
+    app: animals-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: animals-app
+  minReadySeconds: 15
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: animals-app
+    spec:
+      containers:
+        - image: animals-microservices-project/animals-app:0.0.1.-H2
+          imagePullPolicy: IfNotPresent #Always
+          name: animals-app
+          #env:
+          #  - name: SA_LOGIC_API_URL
+          #    value: "http://sa-logic"
+          ports:
+            - containerPort: 8081
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: animals-app
+  labels:
+    app: animals-app
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 8081
+      protocol: TCP
+      targetPort: 8081
+  selector:
+    app: animals-app

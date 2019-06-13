@@ -1,6 +1,6 @@
 spring:
   application:
-    name: discovery-service
+    name: animals-app
   cloud:
     config:
       uri: http://localhost:8089

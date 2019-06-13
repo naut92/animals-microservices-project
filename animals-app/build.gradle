@@ -18,7 +18,7 @@ apply plugin: 'io.spring.dependency-management'
 apply plugin: 'docker'
 
 group 'animals-microservices-project'
-project.version = '0.0.1.-PostgreSQL'
+project.version = '0.0.1.-H2'
 sourceCompatibility = 1.8
 
 configurations {
@@ -58,13 +58,14 @@ dependencies {
     //rabbitMQ
     //implementation 'org.springframework.boot:spring-boot-starter-amqp'
     
-    //Feing
-    //implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
     
-    //eureka
+    /*eureka без K8s:
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
     implementation 'org.springframework.cloud:spring-cloud-starter-config'
-    
+*/
+    //*kubernetes:
+    implementation 'org.springframework.cloud:spring-cloud-starter-kubernetes'
+    //*/
     //implementation 'org.springframework.cloud: spring-cloud-starter-sleuth'
 }
 

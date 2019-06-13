@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service              # 1
 metadata:
-  name: frontend-lb
+  name: frontend
 spec:
-  type: LoadBalancer       # 2
+  type: NodePort #LoadBalancer       # 2
   ports:
     - port: 80               # 3
       protocol: TCP          # 4
@@ -30,7 +30,7 @@ spec:
         app: frontend
     spec:
       containers:
-        - image: frontend/animals-app-client:80
+        - image: frontend/animals-app-client-8064:latest #frontend/animals-app-client-8081:latest
           imagePullPolicy: IfNotPresent #Never #from repository: #Always
           name: frontend
           ports:

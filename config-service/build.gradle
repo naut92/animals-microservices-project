@@ -48,14 +48,3 @@ dependencies {
     //group = 'animals-project':
     //implementation('animals-project:animals-app:0.0.1')
 }
-
-task buildDocker(type: Docker, dependsOn: build) {
-    project.group = 'animals-microservices-project'
-    baseImage 'openjdk:8-jdk-alpine'
-    workingDir('/app')
-    addFile("build/libs/config-service-${project.version}.jar", './')
-    setEnvironment('SPRING_PROFILES_ACTIVE', 'docker,cors')
-    entryPoint(["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "config-service-${project.version}.jar"])
-    exposePort(8089)
-    push = false
-}

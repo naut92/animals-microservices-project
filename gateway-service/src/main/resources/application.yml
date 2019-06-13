@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: gateway-service
+    
+logging:
+  pattern: 
+    console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
+    
+zuul:
+    routes:
+      animals-api:
+        path: /animals-api/**
+      city-api:
+        path: /city-api/**
+      counties-api:
+        path: /counties-api/**
+      veterinarians-api:
+        path: /veterinarians-api/**
+
+server:
+  #servlet:
+  #  context-path: /gateway-service
+  port: 8064

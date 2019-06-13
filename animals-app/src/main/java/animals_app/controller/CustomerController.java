@@ -15,6 +15,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.*;
 
+@CrossOrigin(origins = "*")
 @RestController
 @Api(value="Animals App Management System", description="Operations pertaining to customer in Animals App Management System")
 public class CustomerController {

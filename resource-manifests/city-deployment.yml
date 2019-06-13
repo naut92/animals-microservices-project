@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: city-service
+  labels:
+    app: city-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: city-service
+  template:
+    metadata:
+      labels:
+        app: city-service
+    spec:
+      containers:
+      - image: animals-microservices-project/city-service:0.0.1
+        imagePullPolicy: IfNotPresent #Always
+        name: city-service
+        ports:
+        - containerPort: 8082
+        #env:
+        #- name: MONGO_DATABASE
+        #  valueFrom:
+        #    configMapKeyRef:
+        #      name: mongodb
+        #      key: database-name
+        #- name: MONGO_USERNAME
+        #  valueFrom:
+        #    secretKeyRef:
+        #      name: mongodb
+        #      key: database-user
+        #- name: MONGO_PASSWORD
+        #  valueFrom:
+        #    secretKeyRef:
+        #      name: mongodb
+        #      key: database-password
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: city-service
+  labels:
+    app: city-service
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 8082
+    protocol: TCP
+  selector:
+    app: city-service

@@ -42,14 +42,3 @@ dependencies {
     compile 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
-
-task buildDocker(type: Docker, dependsOn: build) {
-    project.group = 'animals-microservices-project'
-    baseImage 'openjdk:8-jdk-alpine'
-    workingDir('/app')
-    addFile("build/libs/discovery-service-${project.version}.jar", './')
-    setEnvironment('SPRING_PROFILES_ACTIVE', 'docker,cors')
-    entryPoint(["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "discovery-service-${project.version}.jar"])
-    exposePort(8062)
-    push = false
-}
