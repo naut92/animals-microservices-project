@@ -8,14 +8,14 @@ logging:
     
 zuul:
     routes:
-      animals-api:
-        path: /animals-api/**
-      city-api:
-        path: /city-api/**
-      counties-api:
-        path: /counties-api/**
-      veterinarians-api:
-        path: /veterinarians-api/**
+      animals-app:
+        path: /animals-app/**
+      city-service:
+        path: /city-service/**
+      counties-service:
+        path: /counties-service/**
+      veterinarians-service:
+        path: /veterinarians-service/**
 
 server:
   #servlet:

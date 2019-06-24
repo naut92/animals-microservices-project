@@ -3,6 +3,6 @@ spring:
     name: counties-service
 
 server:
-  servlet:
-    context-path: /counties-api
+  #servlet:
+  #  context-path: /counties-api
   port: 8083

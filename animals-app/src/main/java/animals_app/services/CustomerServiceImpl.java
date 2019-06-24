@@ -7,12 +7,8 @@ import animals_app.services.intf.CustomerService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityNotFoundException;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
+import javax.persistence.*;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -64,7 +60,8 @@ public class CustomerServiceImpl implements CustomerService {
         coll.add(animal);
         customer.setAnimalById(coll);
         em.persist(animal);
-        em.persist(customer);
+        em.flush();
+        em.merge(customer);
         return customer;
     }
 

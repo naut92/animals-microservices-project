@@ -10,6 +10,6 @@ import java.util.List;
 @FeignClient(name = "veterinarians-service")
 public interface VeterinarianClient {
 
-	@GetMapping("/veterinarians-api/city/{cityId}")
+	@GetMapping("/city/{cityId}")
 	List<Veterinarian> findByCity(@PathVariable("cityId") Long cityId);
 }

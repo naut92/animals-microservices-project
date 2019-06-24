@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    app: ingress-nginx
+  name: nginx-ingress-configuration
+  #namespace: <ingress-namespace>
+data:
+  ssl-redirect: "false"
+  hsts: "true"
+  server-tokens: "false"
+  http-snippet: |
+    server {
+      listen 8081 proxy_protocol;
+      server_tokens off;
+      return 301 https://$host$request_uri;
+    }

@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+//@CrossOrigin(origins = "*")
 @RestController
 public class CityController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(CityController.class);

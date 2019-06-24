@@ -42,6 +42,6 @@ spec:
   ports:
     - port: 8081
       protocol: TCP
-      targetPort: 8081
+      #targetPort: 8081
   selector:
     app: animals-app

@@ -94,3 +94,7 @@ task buildDocker(type: Docker, dependsOn: build) {
     dockerfile = file('src/main/docker/resources/backend-docker-compose.yml')
     runCommand 'docker-compose up'
 }*/
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.10.3' // version required
+}

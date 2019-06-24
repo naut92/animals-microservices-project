@@ -11,11 +11,11 @@ import java.util.List;
 @FeignClient(name = "animals-app")
 public interface CustomerClient {
 
-	@GetMapping("/animals-api/city/{cityId}")
+	@GetMapping("/city/{cityId}")
 	List<Customer> findByCity(@PathVariable("cityId") Long cityId);
-	@GetMapping("/animals-api/cities")
+	@GetMapping("/cities")
 	List<City> findAllCities();
 
-	@GetMapping("/animals-api/cities/city/{cityId}")
+	@GetMapping("/cities/city/{cityId}")
 	City findCityById(@PathVariable("cityId") Long cityId);
 }

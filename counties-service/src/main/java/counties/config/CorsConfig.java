@@ -1,4 +1,4 @@
-package animals_app.config;
+package counties.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

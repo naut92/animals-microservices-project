@@ -3,6 +3,6 @@ spring:
     name: veterinarians-service
 
 server:
-  servlet:
-    context-path: /veterinarians-api
+  #servlet:
+  #  context-path: /veterinarians-api
   port: 8084

@@ -10,15 +10,15 @@ import java.util.List;
 @FeignClient(name = "counties-service")
 public interface CountyClient {
 
-	@GetMapping("/counties-api/city/{cityId}")
+	@GetMapping("/city/{cityId}")
 	List<County> findByCity(@PathVariable("cityId") Long cityId);
 	
-	@GetMapping("/counties-api/city/{cityId}/counties")
+	@GetMapping("/city/{cityId}/counties")
 	List<County> findByCityWithCounty(@PathVariable("cityId") Long cityId);
 
-	@GetMapping("/counties-api/city/{cityId}/customers")
+	@GetMapping("/city/{cityId}/customers")
 	List<County> findByCityWithCustomers(@PathVariable("cityId") Long cityId);
 
-	@GetMapping("/counties-api/city/{cityId}/veterinarians")
+	@GetMapping("/city/{cityId}/veterinarians")
 	List<County> findByCityWithVeterinarians(@PathVariable("cityId") Long cityId);
 }

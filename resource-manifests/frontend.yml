@@ -3,7 +3,7 @@ kind: Service              # 1
 metadata:
   name: frontend
 spec:
-  type: NodePort #LoadBalancer       # 2
+  type:  NodePort      # 2
   ports:
     - port: 80               # 3
       protocol: TCP          # 4
@@ -17,7 +17,7 @@ kind: Deployment
 metadata:
   name: frontend
 spec:
-  replicas: 2
+  replicas: 1
   minReadySeconds: 15
   strategy:
     type: RollingUpdate
@@ -30,7 +30,7 @@ spec:
         app: frontend
     spec:
       containers:
-        - image: frontend/animals-app-client-8064:latest #frontend/animals-app-client-8081:latest
+        - image: frontend/animals-app-client-custom-nginx:latest #frontend/animals-app-client-custom-nginx:latest #frontend/animals-app-client:latest
           imagePullPolicy: IfNotPresent #Never #from repository: #Always
           name: frontend
           ports:

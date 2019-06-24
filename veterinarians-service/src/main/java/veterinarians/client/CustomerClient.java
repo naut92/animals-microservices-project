@@ -13,21 +13,21 @@ import java.util.List;
 @FeignClient(name = "animals-app")
 public interface CustomerClient {
 
-	@GetMapping("/animals-api/veterinarian/{veterinarianId}")
+	@GetMapping("/veterinarian/{veterinarianId}")
 	List<Customer> findCustomersByVeterinarianId(@PathVariable("veterinarianId") Long veterinarianId);
 
-	@GetMapping("/animals-api/customer-id/{customerId}")
+	@GetMapping("/customer-id/{customerId}")
 	Customer findCustomerById(@PathVariable("customerId") Long customerId);
 
-	@GetMapping("/animals-api/veterinarians")
+	@GetMapping("/veterinarians")
 	List<Veterinarian> findByAllVeterinarians();
 
-	@GetMapping("/animals-api/veterinarians/veterinarian/{veterinarianId}")
+	@GetMapping("/veterinarians/veterinarian/{veterinarianId}")
 	Veterinarian findVeterinarianById(@PathVariable("veterinarianId") Long veterinarianId);
 
-	@GetMapping("/animals-api/cities/city/{cityId}")
+	@GetMapping("/cities/city/{cityId}")
 	City findCityById(@PathVariable("cityId") Long cityId);
 
-	@GetMapping("/animals-api/counties/county/{countyId}")
+	@GetMapping("/counties/county/{countyId}")
 	County findCountyById(@PathVariable("countyId") Long countyId);
 }

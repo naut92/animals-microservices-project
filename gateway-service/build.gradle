@@ -74,5 +74,5 @@ task buildDocker(type: Docker, dependsOn: build) {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '4.10.3'
+    gradleVersion = '4.10.3' // version required
 }

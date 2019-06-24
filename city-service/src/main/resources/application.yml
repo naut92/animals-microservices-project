@@ -3,6 +3,6 @@ spring:
     name: city-service
 
 server:
-  servlet:
-    context-path: /city-api
+  #servlet:
+  #  context-path: /city-api
   port: 8082

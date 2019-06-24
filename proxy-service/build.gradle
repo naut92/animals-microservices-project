@@ -50,7 +50,3 @@ dependencyManagement {
         mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
     }
 }
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '4.10.3'
-}
