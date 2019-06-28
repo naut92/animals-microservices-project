@@ -1,0 +1,87 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  labels:
+    app: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - image: frontend/animals-app-client-custom-nginx:latest
+        imagePullPolicy: IfNotPresent
+        name: frontend
+        lifecycle:
+          postStart:
+            exec:
+              command:
+              - "cp"
+              - "-a"
+              - "/html/."
+              - "/app"
+        command: [ "/bin/sh", "-c", "--" ]
+        args: [ "while true; do sleep 30; done;" ]              
+        volumeMounts:
+        - mountPath: /app
+          name: app-volume
+      - image: nginx:alpine
+        name: nginx
+        ports:
+          - containerPort: 80
+        imagePullPolicy: IfNotPresent
+        resources:
+          limits:
+            cpu: 10m
+            memory: 20Mi
+          requests:
+             cpu: 10m
+             memory: 20Mi
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 10
+          timeoutSeconds: 1
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+            scheme: HTTP
+          initialDelaySeconds: 15
+          timeoutSeconds: 20
+        volumeMounts:
+        - mountPath: /usr/share/nginx/html
+          name: app-volume
+        - mountPath: /etc/nginx/conf.d
+          name: config-volume
+      volumes:
+      - name: app-volume
+        emptyDir: {}
+      - name: config-volume
+        configMap:
+          name: frontend-default-conf
+          items:
+          - key: default.conf
+            path: default.conf
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+spec:
+  type: NodePort
+  ports:
+    - port: 8079
+      targetPort: 80
+  selector:
+    app: frontend

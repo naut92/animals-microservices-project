@@ -30,7 +30,7 @@ spec:
         app: frontend
     spec:
       containers:
-        - image: frontend/animals-app-client-custom-nginx:latest #frontend/animals-app-client-custom-nginx:latest #frontend/animals-app-client:latest
+        - image: frontend/animals-app-client:latest #frontend/animals-app-client-custom-nginx:latest #frontend/animals-app-client:latest
           imagePullPolicy: IfNotPresent #Never #from repository: #Always
           name: frontend
           ports:

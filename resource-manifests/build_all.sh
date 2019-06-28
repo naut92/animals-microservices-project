@@ -1,15 +1,31 @@
 #!/bin/bash
 
 if ../animals-app/gradlew build buildDocker then
-    docker-compose up
-    docker-compose -f docker-compose-build.yml up --build
+    #docker-compose up
+    #docker-compose -f docker-compose-build.yml up --build
 
-    kubectl create -f backend.yml
-    kubectl create -f frontend.yml
+    #servicies:
+    kubectl apply -f animals-app.yml
+    kubectl apply -f city-service.yml
+    kubectl apply -f counties-service.yml
+    kubectl apply -f veterinarians-service.yml
+    kubectl apply -f gateway.yml
 
-    kubectl apply -f ambassador-service.yml
-    kubectl apply -f https://getambassador.io/yaml/ambassador/ambassador-no-rbac.yaml
+    #frontend
+    docker build -t frontend/animals-app-client-custom-nginx .
+    kubectl apply -f frontend-nginx.yml
 
+    #ingress up:
+    kubectl apply -f ingress.yml
+    kubectl apply -f ingress-configmap.yml
+
+    kubectl describe ing ingress-service
+
+    cd..
+    cd resource-manifests
+
+    openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj "/CN=microservices.my"
+    kubectl create secret tls microservices.my-secret --key tls.key --cert tls.crt
 
 #cd shopfront
 #mvn clean install

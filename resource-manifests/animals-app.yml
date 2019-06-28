@@ -29,7 +29,6 @@ spec:
           #    value: "http://sa-logic"
           ports:
             - containerPort: 8081
-
 ---
 apiVersion: v1
 kind: Service
