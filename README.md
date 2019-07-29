@@ -10,6 +10,8 @@
 - Zuul
 - PostgreSQL
 - Spring Data JPA
+- Docker
+- K8s
 
 Microservices endpoint:
 
@@ -21,8 +23,9 @@ config:
                          
 --------------------------
 
-- animals-app(backend): /8081/animals-api/
+- animals-app(backend): /8081
 - animals-app-client(frontend: https://github.com/naut92/animals-app-client): /3000
-- city-service: /8082/city-api/
-- counties-service: /8083/counties-api/
-- veterinarians-service: /8084/veterinarians-api/
+- city-service: /8082
+- counties-service: /8083
+- veterinarians-service: /8084
+
