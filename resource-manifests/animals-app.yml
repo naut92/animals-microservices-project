@@ -37,7 +37,7 @@ metadata:
   labels:
     app: animals-app
 spec:
-  type: LoadBalancer
+  type: NodePort #LoadBalancer
   ports:
     - port: 8081
       protocol: TCP

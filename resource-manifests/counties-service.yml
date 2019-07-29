@@ -44,7 +44,7 @@ metadata:
   labels:
     app: counties-service
 spec:
-  type: LoadBalancer
+  type: NodePort #LoadBalancer
   ports:
   - port: 8083
     protocol: TCP

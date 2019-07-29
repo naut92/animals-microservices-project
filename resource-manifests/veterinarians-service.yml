@@ -28,7 +28,7 @@ metadata:
   labels:
     app: veterinarians-service
 spec:
-  type: LoadBalancer
+  type: NodePort #LoadBalancer
   ports:
   - port: 8084
     protocol: TCP

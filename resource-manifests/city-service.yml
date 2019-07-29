@@ -44,7 +44,7 @@ metadata:
   labels:
     app: city-service
 spec:
-  type: LoadBalancer
+  type: NodePort #LoadBalancer
   ports:
   - port: 8082
     protocol: TCP
