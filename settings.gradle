@@ -1,3 +1,9 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+    }
+}
+
 rootProject.name = 'animals-microservices-project'
 include 'animals-app'
 include 'config-service'
