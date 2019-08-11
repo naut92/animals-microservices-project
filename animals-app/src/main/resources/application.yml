@@ -5,16 +5,29 @@ spring:
 #   Database Settings
 ###
   datasource:
-      url: jdbc:h2:~/animals_db;DB_CLOSE_ON_EXIT=FALSE; #AUTO_SERVER=TRUE
+      #<------H2-------------->
+      #platform: h2
+      #driverClassName: org.h2.Driver
+      #url: jdbc:h2:~/animals_db;DB_CLOSE_ON_EXIT=FALSE; #AUTO_SERVER=TRUE
       #url: jdbc:h2:mem:animals_db; #DB_CLOSE_DELAY=-1 #DB_CLOSE_DELAY=-1;
+      #password:   #h2
+      #<----------End H2----------->
+
+      #<------Postgres-------------->
+      platform: postgresql
+      driverClassName: org.postgresql.Driver
+      #<----- without К8s ---->
       #url: jdbc:postgresql://localhost:5432/animals_db #DB_CLOSE_DELAY=-1; DB_CLOSE_ON_EXIT=FALSE
-      platform: h2
-      #platform: postgresql
-      username: sa
-      password:
+      #username: sa
       #password: pass #postgres
-      driverClassName: org.h2.Driver
-      #driverClassName: org.postgresql.Driver
+      #<------END without K8s------->
+
+      #<---------- K8s------>
+      url: jdbc:postgresql://stolon-proxy-service.default.svc.cluster.local:5432/animals_db
+      username: stolon
+      password: password1
+      #<------END K8s------->
+      #<----------End Postgres----------->
       initialization-mode: always
   jpa:
     #database-platform: org.hibernate.dialect.H2Dialect

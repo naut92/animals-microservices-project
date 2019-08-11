@@ -12,6 +12,7 @@
 - Spring Data JPA
 - Docker
 - K8s
+- Stolon
 
 Microservices endpoint:
 

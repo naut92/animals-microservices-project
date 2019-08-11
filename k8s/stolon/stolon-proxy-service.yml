@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: stolon-proxy-service
 spec:
-  type: ClusterIP #NodePort #
+  type: NodePort #ClusterIP
   ports:
     - port: 5432
       targetPort: 5432

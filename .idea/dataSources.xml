@@ -7,5 +7,11 @@
       <jdbc-driver>org.h2.Driver</jdbc-driver>
       <jdbc-url>jdbc:h2:~/animals_db</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="animals_db@localhost" uuid="190ae6c1-92cf-4094-ae47-50411b8955d9">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:30891/animals_db</jdbc-url>
+    </data-source>
   </component>
 </project>

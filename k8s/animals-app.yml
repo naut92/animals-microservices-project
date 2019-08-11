@@ -21,7 +21,7 @@ spec:
         app: animals-app
     spec:
       containers:
-        - image: animals-microservices-project/animals-app:0.0.1.-H2
+        - image: animals-microservices-project/animals-app:0.0.1.-Postgres-Stolon
           imagePullPolicy: IfNotPresent #Always
           name: animals-app
           #env:
@@ -29,6 +29,24 @@ spec:
           #    value: "http://sa-logic"
           ports:
             - containerPort: 8081
+          #-------<connect to Stolon>---------
+         # env:
+         #   - name: POSTGRES_USER
+         #     valueFrom:
+         #       configMapKeyRef:
+         #         name: postgres-config
+         #         key: postgres_user
+         #   - name: POSTGRES_PASSWORD
+         #     valueFrom:
+         #       configMapKeyRef:
+         #         name: postgres-config
+         #         key: postgres_password
+         #   - name: POSTGRES_HOST
+         #     valueFrom:
+         #       configMapKeyRef:
+         #         name: postgres-config #hostname-config
+         #         key: postgres_host
+          #---------<end>----------------
 ---
 apiVersion: v1
 kind: Service

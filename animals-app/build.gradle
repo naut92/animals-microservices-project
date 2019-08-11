@@ -18,7 +18,8 @@ apply plugin: 'io.spring.dependency-management'
 apply plugin: 'docker'
 
 group 'animals-microservices-project'
-project.version = '0.0.1.-H2'
+//project.version = '0.0.1.-H2'
+project.version = '0.0.1.-Postgres-Stolon'
 sourceCompatibility = 1.8
 
 configurations {
