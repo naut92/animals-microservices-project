@@ -34,9 +34,13 @@ config:
 
 in K8s:
 gateway-service: /8064
+                 
                  /animals-app
+                 
                  /city-service
+                 
                  /counties-service
+                 
                  /veterinarians-service
                   
 frontend: https://microservices.my/
