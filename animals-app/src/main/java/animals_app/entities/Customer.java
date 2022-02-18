@@ -1,5 +1,6 @@
 package animals_app.entities;
 
+import animals_app.entities.intf.SimpleIdentifiableEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
@@ -18,13 +19,8 @@ import java.util.Set;
 @Entity
 @Table(name = "customers")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Customer implements Serializable{
-    private static final long serialVersionUID = -481073315751589931L;
+public class Customer extends SimpleIdentifiableEntity {
 
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     @Basic
     @Column(name = "city_id")
     private Long city_id;
@@ -78,6 +74,7 @@ public class Customer implements Serializable{
 
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "customerById", cascade = CascadeType.ALL)
+    //@OneToMany(targetEntity = Animal.class) попробовать аннотацию
     private Collection<Animal> animalById;
 
     @JsonIgnore

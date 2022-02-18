@@ -13,5 +13,12 @@
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://localhost:30891/animals_db</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="animals_db@localhost [2]" uuid="7215e212-013c-4090-8fcb-e9f8d30cde92">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/animals_db</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

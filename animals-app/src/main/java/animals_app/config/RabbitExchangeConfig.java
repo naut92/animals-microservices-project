@@ -1,4 +1,4 @@
-package animals_app.config;
+/*package animals_app.config;
 
 
 import org.slf4j.Logger;
@@ -18,7 +18,9 @@ import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 
 @Configuration
 public class RabbitExchangeConfig {
-/*
+
+*/
+ /*
     @Bean
     public TopicExchange topicExchange() {
         return new TopicExchange("animals-app");
@@ -36,9 +38,9 @@ public class RabbitExchangeConfig {
         return new Jackson2JsonMessageConverter();
     }
 */
-    Logger logger = LoggerFactory.getLogger(RabbitExchangeConfig.class);
 
-    //настраиваем соединение с RabbitMQ
+
+    /*настраиваем соединение с RabbitMQ
     @Bean
     public ConnectionFactory connectionFactory() {
         CachingConnectionFactory connectionFactory =
@@ -89,3 +91,4 @@ public class RabbitExchangeConfig {
         return BindingBuilder.bind(myQueue2()).to(topicExchange()).with("lazy.#");
     }
 }
+*/

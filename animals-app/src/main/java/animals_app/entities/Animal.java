@@ -1,30 +1,21 @@
 package animals_app.entities;
 
+import animals_app.entities.intf.SimpleIdentifiableEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.lang.NonNull;
+import lombok.ToString;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
 @Entity
 @Table(name = "animals")
-public class Animal implements Serializable{
-    private static final long serialVersionUID = 5124000706092599751L;
-
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public class Animal extends SimpleIdentifiableEntity {
     @Basic
-    @NonNull
-    @Column(name = "animalname")
-    private String animalname;
+    @Column(name = "name")
+    private String name;
 
     @Basic
     @Column(name = "dateborn")
@@ -42,21 +33,13 @@ public class Animal implements Serializable{
     @Column(name = "typesanimal")
     private String typesanimal;
 
+    @Basic
+    @Column(name = "price")
+    private Integer price;
+
+    @ToString.Exclude
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "customer_id", referencedColumnName = "id", insertable = false, updatable = false)
     private Customer customerById;
-
-    @Override
-    public String toString() {
-        return "Animal{" +
-                "id=" + id +
-                ", animalname='" + animalname + '\'' +
-                ", dateborn='" + dateborn + '\'' +
-                ", sex='" + sex + '\'' +
-                ", customerId=" + customerId +
-                ", typesanimal='" + typesanimal + '\'' +
-                ", customerById=" + getCustomerById().getId() +
-                '}';
-    }
 }

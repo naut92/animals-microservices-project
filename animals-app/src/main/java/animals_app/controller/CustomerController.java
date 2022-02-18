@@ -29,7 +29,6 @@ public class CustomerController {
         animalService = serviceA;
     }
 
-
     @ApiOperation(value = "View a list of available customers", response = List.class)
     @GetMapping("/customers")
     public Collection<Customer> getAllCustomers(){

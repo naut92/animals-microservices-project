@@ -32,19 +32,19 @@ INSERT INTO customers (city_id, county_id, firstname, lastname, email, pass, pas
 (2, 5, 'user7-fn', 'user7-ln', 'email7@email.com', '12A34', '12A34');
 
 --Animals
-INSERT INTO animals (customer_id, typesanimal, animalname, sex, dateborn) VALUES
-(3, 'cat', 'animal1', 'male', '2013-13-06'),
-(3, 'dog', 'animal2', 'female', '2015-24-09'),
-(1, 'bird', 'animal34', 'female', '2011-15-02'),
-(4, 'fish', 'animal4', 'male', '2010-16-03'),
-(5, 'dog', 'animal5', 'female', '2009-17-04'),
-(5, 'bird', 'animal6', 'male', '2008-18-05'),
-(6, 'cat', 'animal7', 'male', '2007-19-06'),
-(6, 'fish', 'animal8', 'female', '2006-20-07'),
-(7, 'dog', 'animal9', 'female', '2005-21-08'),
-(7, 'fish', 'animal10', 'male', '2004-23-09'),
-(7, 'cat', 'animal11', 'female', '2003-22-10'),
-(7, 'bird', 'animal12', 'male', '2002-24-11');
+INSERT INTO animals (customer_id, typesanimal, name, sex, dateborn, price) VALUES
+(3, 'cat', 'animal1', 'male', '2013-13-06', 1000),
+(3, 'dog', 'animal2', 'female', '2015-24-09', 2000),
+(1, 'bird', 'animal34', 'female', '2011-15-02', 3500),
+(4, 'fish', 'animal4', 'male', '2010-16-03', 300),
+(5, 'dog', 'animal5', 'female', '2009-17-04', 2500),
+(5, 'bird', 'animal6', 'male', '2008-18-05', 4000),
+(6, 'cat', 'animal7', 'male', '2007-19-06', 1350),
+(6, 'fish', 'animal8', 'female', '2006-20-07', 450),
+(7, 'dog', 'animal9', 'female', '2005-21-08', null),
+(7, 'fish', 'animal10', 'male', '2004-23-09', 650),
+(7, 'cat', 'animal11', 'female', '2003-22-10', 25000),
+(7, 'bird', 'animal12', 'male', '2002-24-11', 7500);
 
 INSERT INTO veterin_county (county_id, veterinarian_id) VALUES
 (1, 1),

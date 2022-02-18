@@ -28,11 +28,13 @@ public class CustomerServiceImpl implements CustomerService {
         Query query = em.createQuery("SELECT e FROM Customer e");
         return (Collection<Customer>) query.getResultList();
     }
-/*
+
     @Override
-    public Optional<Customer> getCustomerById(Long id) {
-        return customersRepository.findById(id);
-    }*/
+    public Optional<Customer> getCustomerById(Long customerId) {
+        Customer customer = em.find(Customer.class, customerId);
+        if(customer != null) return Optional.of(customer);
+        else throw new EntityNotFoundException();
+    }
 
     public Collection<Animal> getAnimalsByCustomerId(Long id) {
         Customer customer = em.find(Customer.class, id);
@@ -130,13 +132,6 @@ public class CustomerServiceImpl implements CustomerService {
     public Veterinarian findVeterinarianById(Long veterinarianId) {
         Veterinarian veterinarian = em.find(Veterinarian.class, veterinarianId);
         if(veterinarian != null) return veterinarian;
-        else throw new EntityNotFoundException();
-    }
-
-    @Override
-    public Optional<Customer> getCustomerById(Long customerId) {
-        Customer customer = em.find(Customer.class, customerId);
-        if(customer != null) return Optional.of(customer);
         else throw new EntityNotFoundException();
     }
 

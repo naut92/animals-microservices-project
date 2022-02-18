@@ -1,6 +1,7 @@
 initialize the cluster:
 $ kubectl run -i -t stolonctl --image=sorintlab/stolon:master-pg10  --restart=Never --rm -- /usr/local/bin/stolonctl --cluster-name=kube-stolon --store-backend=kubernetes --kube-resource-kind=configmap init 
 
+
 Имя кластера kube-stolon
 
 $ kubectl apply -f stolon-sentinel.yml
@@ -14,6 +15,8 @@ $ kubectl get svc
 $ kubectl -n default get services | fgrep proxy
 $ kubectl -n default get pods -o wide
 
+$ kubectl get secret stolon -o yaml
+
 #########подключить приложение  к бд:
 ######$ kubectl create configmap postgres-config --from-file=animals-app/src/main/resources/application-k8s.yml
 
@@ -25,10 +28,13 @@ $ kubectl -n default exec -it stolon-keeper-0 -- psql --host 10.1.7.141 --port 5
 для user stolon:
 pass: password1
 
+
+
+
 ##### попробовать psql --host 10.106.151.182 --port 30891 postgres -U stolon -W
 
 посмотреть окружение сервиса:
-$ kubectl exec stolon-proxy-55c59cb566-xzqpl -- printenv | grep SERVICE
+$ kubectl exec stolon-proxy-bd986b458-jft8v -- printenv | grep SERVICE
 
 посмотреть адрес сервиса:
 $ kubectl run curl --image=radial/busyboxplus:curl -i --tty

@@ -1,5 +1,6 @@
 package animals_app.entities;
 
+import animals_app.entities.intf.SimpleIdentifiableEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,13 +13,7 @@ import java.util.Collection;
 @NoArgsConstructor
 @Entity
 @Table(name = "roles")
-public class RolesEntity implements Serializable{
-    private static final long serialVersionUID = 1L;
-
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class RolesEntity extends SimpleIdentifiableEntity {
 
     @Basic
     @Column(name = "roles")

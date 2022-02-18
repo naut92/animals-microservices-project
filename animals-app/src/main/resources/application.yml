@@ -17,24 +17,28 @@ spring:
       platform: postgresql
       driverClassName: org.postgresql.Driver
       #<----- without К8s ---->
-      #url: jdbc:postgresql://localhost:5432/animals_db #DB_CLOSE_DELAY=-1; DB_CLOSE_ON_EXIT=FALSE
-      #username: sa
-      #password: pass #postgres
+      url: jdbc:postgresql://localhost:5432/animals_db #DB_CLOSE_DELAY=-1; DB_CLOSE_ON_EXIT=FALSE
+      username: postgres
+      password: postgres
       #<------END without K8s------->
 
       #<---------- K8s------>
-      url: jdbc:postgresql://stolon-proxy-service.default.svc.cluster.local:5432/animals_db
-      username: stolon
-      password: password1
+      #url: jdbc:postgresql://stolon-proxy-service.default.svc.cluster.local:5432/animals_db
+      #<----- locally dev mode--->
+      #url: jdbc:postgresql://localhost:30891/animals_db
+      #username: stolon
+      #password: password1
       #<------END K8s------->
       #<----------End Postgres----------->
       initialization-mode: always
+
   jpa:
     #database-platform: org.hibernate.dialect.H2Dialect
     database-platform: org.hibernate.dialect.PostgreSQL94Dialect
-    properties.hibernate.temp.use_jdbc_metadata_defaults: false
-    hibernate:
-      ddl-auto: create
+    #properties.hibernate.temp.use_jdbc_metadata_defaults: false
+    #generate-ddl: true
+    #hibernate:
+    #  ddl-auto: create
     show-sql: true
 
 
@@ -51,6 +55,7 @@ spring:
 ###
   #liquibase:
     #change-log: classpath:/db/1.0.0/changelog-master.xml
+
 
 server:
   #servlet:

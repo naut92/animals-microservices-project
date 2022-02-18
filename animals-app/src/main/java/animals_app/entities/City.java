@@ -1,5 +1,6 @@
 package animals_app.entities;
 
+import animals_app.entities.intf.SimpleIdentifiableEntity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,10 +13,7 @@ import java.util.List;
 @Entity
 @Table(name = "cities")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class City {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class City  extends SimpleIdentifiableEntity {
 
     @Basic
     @Column(name = "name")
